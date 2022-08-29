@@ -9,8 +9,11 @@ package com.flightbooking;
 import java.util.Scanner;
 
 
+
+
+
+
 public class FlightBookingService {
-	
 	
 	public static void main(String[] a) {
  
@@ -47,7 +50,7 @@ public class FlightBookingService {
 		        String option=sc.nextLine();
 		        
           
-            while(true)    {    
+          while(true){    
             	
         	if ("1".equals(option)||"2".equals(option))
             {
@@ -106,19 +109,18 @@ public class FlightBookingService {
         			    break;    			
         		}
         		
-	        		if ("2".equals(option))
-	        		{        
+	        		  if ("2".equals(option))
+	        		  {        
 	        			 ThankYou message = new ThankYou();
 	     			     message.exit();
-    		        }
+    		          }
 	
-	            }
-	             else
-	               {
-	                 System.out.print("Invalid Input. Try Again, (Type in between 1 to 3): ");
-	                 option=sc.nextLine();
+	            }else
+	                 {
+	             	   System.out.print("Invalid Input. Try Again, (Type in between 1 to 3): ");
+	                   option=sc.nextLine();
 	            
-	               }
+	                 }
 	            
 	            
 	         }
@@ -164,10 +166,10 @@ class BookTicket{
 		
 			System.out.println("\n We have found some flights from your Origin: " + this.origin.toUpperCase() +" and Destination: "+this.destination.toUpperCase());
 	
-			System.out.println("\nFlight 563A: Vistara            Time : 4:00"+ "    Available Seats =  " + VISTARA_SEAT );
-			System.out.println("Flight 453E: Indigo             Time : 10:00" + "   Available Seats =  " + INDIGO_SEAT );
-			System.out.println("Flight 234E: GoAir              Time : 16:00" + "   Available Seats =  " + GOAIR_SEAT );
-			System.out.println("Flight 43RF: AirIndia           Time : 21:00" + "   Available Seats =  " + AIRINDIA_SEAT+"\n" );
+			System.out.println("\nFlight 563A: Vistara            Time : 4:00"+ "    Available Seats =  " + VISTARA_SEAT);
+			System.out.println("Flight 453E: Indigo             Time : 10:00" + "   Available Seats =  " + INDIGO_SEAT);
+			System.out.println("Flight 234E: GoAir              Time : 16:00" + "   Available Seats =  " + GOAIR_SEAT);
+			System.out.println("Flight 43RF: AirIndia           Time : 21:00" + "   Available Seats =  " + AIRINDIA_SEAT+"\n");
 	
 			Scanner sc = new Scanner(System.in);
 			System.out.print("Enter Flight Number (Example:563A) :  ");
@@ -220,9 +222,26 @@ class Flight extends BookTicket {
 		PassengerName=sc.nextLine();
 		System.out.print("Enter Passenger City: ");
 		city=sc.nextLine();
+	
 		
-		System.out.print("Enter Passenger Age: ");
-		age=sc.nextInt();
+		while(true) {
+		try {
+			System.out.print("\nEnter Passenger Age (Must be 18+): ");
+			age=sc.nextInt();
+			
+		   	if(age<18) {
+		   		
+				throw new AgeErrorHandle("Notice : Age Must be greater than 18.");
+		   	}
+		   	
+		   	break;
+		}catch(AgeErrorHandle e){
+					
+				System.out.print(e.getMessage());
+
+	 	}	  }
+		
+		
 		System.out.println("Origin City: "+origin);
 		System.out.println("Destination City: "+destination);
 
