@@ -28,22 +28,22 @@ public class FlightBookingService {
 				System.out.println("\n<-- I hope you are well, staying safe and healthy, During this Pandemic.-->");
 					
 				
-	    	for(int j =0; j >=0 ;j++)   {
+		   while(true)   {
 					 
 				System.out.println("\n\tChoose from below available option:-->");
 				System.out.println("\n\t1.Book tickets: (Type 1)");
 				System.out.println("\t2.Exit: (Type 2)");
 				
 				System.out.print("\nSelect Desired Option by entering Index number Ex '1' : ");
-		        String opt=sc.nextLine();
+		        String option=sc.nextLine();
 		        
           
             while(true)    {    
             	
-        	if (opt.equals("1") ||opt.equals("2"))
+        	if (option.equals("1") ||option.equals("2"))
             {
 	
-        		if (opt.equals("1"))
+        		if (option.equals("1"))
         		{
 	        			
         		    	//Adding User for Flight Service
@@ -91,7 +91,7 @@ public class FlightBookingService {
         			    break;    			
         		}
         		
-	        		if (opt.equals("2"))
+	        		if (option.equals("2"))
 	        		{        
 	        			
 	        			 ThankYou ty = new ThankYou();
@@ -100,9 +100,8 @@ public class FlightBookingService {
 	            }
 	             else
 	               {
-	           
-	            	 System.out.print("Invalid Input. Try Again, (Type in between 1 to 3): ");
-	                 opt=sc.nextLine();
+	                 System.out.print("Invalid Input. Try Again, (Type in between 1 to 3): ");
+	                 option=sc.nextLine();
 	            
 	               }
 	            
@@ -223,6 +222,7 @@ class Flight extends BookTicket {
 			
 			System.out.println("\n\n"+FlightName +" Ticket Booked Successfully");
 			
+			
 			BookingHistory bc=new BookingHistory();	
 			bc.setPassengerName(PassengerName);
 			bc.setAge(age);
@@ -232,7 +232,8 @@ class Flight extends BookTicket {
 			bc.setFlightNo(FlightNo);
 
 			
-		
+			//Booking Output
+
 			System.out.println("\n\nYour Booked Ticket of Flight " + bc.getFlightName() + " : "+bc.getFlightNo()+" is:");
 			System.out.println("Passenger Name :           " + bc.getPassengerName());
 			System.out.println("Passenger age :            " + bc.getAge());
@@ -243,20 +244,19 @@ class Flight extends BookTicket {
 
 			
 			System.out.print("Go to Main Menu to Book Another Ticket: yes/no? :  ");
-				yes=sc.next();
+			yes=sc.next();
 				
-					if (yes.equals("yes"))
-					{
+			if (yes.equals("yes")){
 											
-					}
-					else
-					{
-					 ThankYou ty = new ThankYou();
-	                  System.exit(1);		 
-					}
+			//call main class loop automatically
+			 }
+			else{
+				ThankYou ty = new ThankYou();
 				
-				
-													
+				//terminate the programme
+	            System.exit(1);		 
+				}
+																	
 			}
 			else
 			{
