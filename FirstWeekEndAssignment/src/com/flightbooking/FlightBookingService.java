@@ -40,10 +40,10 @@ public class FlightBookingService {
           
             while(true)    {    
             	
-        	if (option.equals("1") ||option.equals("2"))
+        	if ("1".equals(option)||"2".equals(option))
             {
 	
-        		if (option.equals("1"))
+        		if ("1".equals(option))
         		{
 	        			
         		    	//Adding User for Flight Service
@@ -60,28 +60,28 @@ public class FlightBookingService {
 	        			
 	        			//checking flight no
 	        			
-	        			if (Flightno.equals("563A")||Flightno.equals("563a")) 
+	        			if ("563A".equalsIgnoreCase(Flightno)) 
 	        			{
 	        				Flight vs=new Flight(origin,dest,name,Flightno,"Vistara",Vseat);
 	        				Vseat=vs.bookingFlight();
 	        						
 	        			}
 	        			
-	        			if (Flightno.equals("453E")||Flightno.equals("453e")) 
+	        			if ("453E".equalsIgnoreCase(Flightno)) 
 	        			{
 	        				Flight vs=new Flight(origin,dest,name,Flightno,"IndiGo",Iseat);
 	        				Iseat=vs.bookingFlight();
 	        						
 	        			}
 	        			
-	        			if (Flightno.equals("234E")||Flightno.equals("234e")) 
+	        			if ("234E".equalsIgnoreCase(Flightno)) 
 	        			{
 	        				Flight vs=new Flight(origin,dest,name,Flightno,"Go Air",Gseat);
 	        				Gseat=vs.bookingFlight();
 	        						
 	        			}
-	        			
-	        			if (Flightno.equals("43RF")||Flightno.equals("43rf")) 
+	        				        			
+	        			if ("43RF".equalsIgnoreCase(Flightno)) 
 	        			{
 	        				Flight vs=new Flight(origin,dest,name,Flightno,"Air India",Aseat);
 	        				Aseat=vs.bookingFlight();
@@ -91,11 +91,11 @@ public class FlightBookingService {
         			    break;    			
         		}
         		
-	        		if (option.equals("2"))
+	        		if ("2".equals(option))
 	        		{        
-	        			
 	        			 ThankYou ty = new ThankYou();
-	                     System.exit(1);        		}
+	                     System.exit(1);        		
+	                     }
 	
 	            }
 	             else
@@ -215,7 +215,7 @@ class Flight extends BookTicket {
 		System.out.print("\nConfirm to Book Ticket yes/no:");
 		confirm=sc.next().toLowerCase();
 
-		if(confirm.equals("yes"))
+		if("yes".equalsIgnoreCase(confirm))
 		{
 			
 			seat--;
@@ -246,7 +246,7 @@ class Flight extends BookTicket {
 			System.out.print("Go to Main Menu to Book Another Ticket: yes/no? :  ");
 			yes=sc.next();
 				
-			if (yes.equals("yes")){
+			if ("yes".equalsIgnoreCase(yes)){
 											
 			//call main class loop automatically
 			 }
