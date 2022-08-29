@@ -117,17 +117,15 @@ public class FlightBookingService {
 	
 	            }else
 	                 {
-	             	   System.out.print("Invalid Input. Try Again, (Type in between 1 to 3): ");
-	                   option=sc.nextLine();
+	             	    System.out.print("Invalid Input. Try Again, (Type in between 1 to 3): ");
+	                    option=sc.nextLine();
 	            
 	                 }
-	            
-	            
+	            	            
 	         }
 	        
 	     }  
-     
-       
+            
 	}
 	
 }
@@ -137,18 +135,25 @@ public class FlightBookingService {
 
 class BookTicket{
 	
-	String origin;
-	String destination;
-	String flightno;
-	int VISTARA_SEAT,INDIGO_SEAT,GOAIR_SEAT,AIRINDIA_SEAT;
+	
+		String origin;
+		String destination;
+		String flightno;
+		int VISTARA_SEAT,INDIGO_SEAT,GOAIR_SEAT,AIRINDIA_SEAT;
+		
+	
 	
 	BookTicket(){
 		
 	}
 	
     BookTicket(String origin,String destination){
+    	
+    	
 		this.origin=origin;
 		this.destination=destination;
+		
+		
 	}
 
 
@@ -160,6 +165,8 @@ class BookTicket{
 		this.INDIGO_SEAT=INDIGO_SEAT;
 		this.GOAIR_SEAT=GOAIR_SEAT;
 		this.AIRINDIA_SEAT=AIRINDIA_SEAT;
+		
+		
 	}
 	
 	String checkingFlights(){
@@ -183,21 +190,30 @@ class BookTicket{
 
 
 class Flight extends BookTicket {
-
-	String origin;
-	String destination,FlightName;
-	String name,city;
-	String yes;
-	String PassengerName,confirm,FlightNo;
-	int age,seat;
+	
+	
+	
+		String origin;
+		String destination,FlightName;
+		String name,city;
+		String yes;
+		String PassengerName,confirm,FlightNo;
+		int age,seat;
+		
+	
 
 	Flight(String origin, String destination,String name,String FlightNo,String FlightName,int seat) {
+		
+		
 		this.origin=origin;
 		this.destination=destination;
 		this.name=name;
 		this.FlightNo=FlightNo;
 		this.seat=seat;
 		this.FlightName=FlightName;
+		
+		
+		
 	}
 	
 	int bookingFlight() {
@@ -224,6 +240,10 @@ class Flight extends BookTicket {
 		city=sc.nextLine();
 	
 		
+		
+		
+		//Error handling on Age
+		
 		while(true) {
 		try {
 			System.out.print("\nEnter Passenger Age (Must be 18+): ");
@@ -242,6 +262,9 @@ class Flight extends BookTicket {
 	 	}	  }
 		
 		
+		
+		
+		
 		System.out.println("Origin City: "+origin);
 		System.out.println("Destination City: "+destination);
 
@@ -249,15 +272,37 @@ class Flight extends BookTicket {
 		System.out.print("\nConfirm to Book Ticket yes/no:");
 		confirm=sc.next().toLowerCase();
 
+		
+		
 		if("yes".equalsIgnoreCase(confirm))
 		{
 			
 			seat--;
 			
+			System.out.println("\n\tWe are generating Ticket for your Journey. \n\tPlease Wait\t");
+			System.out.print("\t*");
+
+			for(int i =0 ;i<5;i++)
+			{
+				
+		 	System.out.print("*");
+				try {
+				Thread.sleep(500);
+				} catch (InterruptedException e) {
+				System.out.print(e.getMessage());
+				}
+
+			}
+
+			
+			
 			System.out.println("\n\n"+FlightName +" Ticket Booked Successfully");
 			
 			
 			BookingHistory bh=new BookingHistory();	
+			
+			
+			//Setting data in Encapsulation to secure passenger info
 			
 			bh.setPassengerName(PassengerName);
 			bh.setAge(age);
@@ -267,7 +312,10 @@ class Flight extends BookTicket {
 			bh.setFlightNo(FlightNo);
 
 			
-			//Booking Output
+			
+			
+			
+			//Booking Output //fetching data from Encapsulation
 
 			System.out.println("\n\nYour Booked Ticket of Flight " + bh.getFlightName().toUpperCase() + " : "+bh.getFlightNo().toUpperCase()+" is:");
 			System.out.println("Passenger Name :           " + bh.getPassengerName().toUpperCase());
@@ -280,6 +328,8 @@ class Flight extends BookTicket {
 			
 			System.out.print("Go to Main Menu to Book Another Ticket: yes/no? :  ");
 			yes=sc.next();
+			
+			
 				
 			if ("yes".equalsIgnoreCase(yes)){
 											
