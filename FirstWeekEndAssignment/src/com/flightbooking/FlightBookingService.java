@@ -10,9 +10,18 @@ import java.util.*;
 
 
 public class FlightBookingService {
+	
+	
 	public static void main(String[] a) {
  
-	         	int Vseat=6,Iseat=5,Gseat=9,Aseat=4;
+	         	int VISTARA_SEAT=6,INDIGO_SEAT=5,GOAIR_SEAT=9,AIRINDIA_SEAT=4;
+	         	final String VISTARA_FLIGHT_NO = "563A";
+	         	final String INDIGO_FLIGHT_NO = "453E";
+	         	final String GOAIR_FLIGHT_NO = "234E";
+	         	final String AIRINDIA_FLIGHT_NO = "43RF";
+
+         	
+	         	
 	         	
 				System.out.println("\n********************************************************");
 				System.out.println("*                                                      *");
@@ -24,7 +33,7 @@ public class FlightBookingService {
 				Scanner sc = new Scanner(System.in);
 		        String name=sc.nextLine();
 		 
-				System.out.println("\n\n\tWelcome Sir/Madam, " + name);
+				System.out.println("\n\n\tWelcome Sir/Madam, " + name.toUpperCase());
 				System.out.println("\n<-- I hope you are well, staying safe and healthy, During this Pandemic.-->");
 					
 				
@@ -52,39 +61,39 @@ public class FlightBookingService {
 	        			String origin=sc.nextLine();
 	        			        			
 	        			System.out.print("\tEnter Destination: ");
-	        			String dest=sc.nextLine();
+	        			String destination=sc.nextLine();
 	        			
-	        			BookTicket bk = new BookTicket(origin,dest,Vseat,Iseat,Gseat,Aseat);
+	        			BookTicket bk = new BookTicket(origin,destination,VISTARA_SEAT,INDIGO_SEAT,GOAIR_SEAT,AIRINDIA_SEAT);
 	        			String Flightno=bk.checkingFlights();
 	        			
 	        			
 	        			//checking flight no
 	        			
-	        			if ("563A".equalsIgnoreCase(Flightno)) 
+	        			if (VISTARA_FLIGHT_NO.equalsIgnoreCase(Flightno)) 
 	        			{
-	        				Flight vs=new Flight(origin,dest,name,Flightno,"Vistara",Vseat);
-	        				Vseat=vs.bookingFlight();
+	        				Flight vs=new Flight(origin,destination,name,Flightno,"Vistara",VISTARA_SEAT);
+	        				VISTARA_SEAT=vs.bookingFlight();
 	        						
 	        			}
 	        			
-	        			if ("453E".equalsIgnoreCase(Flightno)) 
+	        			if (INDIGO_FLIGHT_NO.equalsIgnoreCase(Flightno)) 
 	        			{
-	        				Flight vs=new Flight(origin,dest,name,Flightno,"IndiGo",Iseat);
-	        				Iseat=vs.bookingFlight();
+	        				Flight vs=new Flight(origin,destination,name,Flightno,"IndiGo",INDIGO_SEAT);
+	        				INDIGO_SEAT=vs.bookingFlight();
 	        						
 	        			}
 	        			
-	        			if ("234E".equalsIgnoreCase(Flightno)) 
+	        			if (GOAIR_FLIGHT_NO.equalsIgnoreCase(Flightno)) 
 	        			{
-	        				Flight vs=new Flight(origin,dest,name,Flightno,"Go Air",Gseat);
-	        				Gseat=vs.bookingFlight();
+	        				Flight vs=new Flight(origin,destination,name,Flightno,"Go Air",GOAIR_SEAT);
+	        				GOAIR_SEAT=vs.bookingFlight();
 	        						
 	        			}
 	        				        			
-	        			if ("43RF".equalsIgnoreCase(Flightno)) 
+	        			if (AIRINDIA_FLIGHT_NO.equalsIgnoreCase(Flightno)) 
 	        			{
-	        				Flight vs=new Flight(origin,dest,name,Flightno,"Air India",Aseat);
-	        				Aseat=vs.bookingFlight();
+	        				Flight vs=new Flight(origin,destination,name,Flightno,"Air India",AIRINDIA_SEAT);
+	        				AIRINDIA_SEAT=vs.bookingFlight();
 	        			        				        						
 	        			}
         			
@@ -93,9 +102,9 @@ public class FlightBookingService {
         		
 	        		if ("2".equals(option))
 	        		{        
-	        			 ThankYou ty = new ThankYou();
-	                     System.exit(1);        		
-	                     }
+	        			 ThankYou message = new ThankYou();
+	     			     message.exit();
+    		        }
 	
 	            }
 	             else
@@ -109,7 +118,7 @@ public class FlightBookingService {
 	         }
 	        
 	     }  
-        
+     
        
 	}
 	
@@ -121,46 +130,44 @@ public class FlightBookingService {
 class BookTicket{
 	
 	String origin;
-	String dest;
+	String destination;
 	String flightno;
-	int Vseat,Iseat,Gseat,Aseat;
+	int VISTARA_SEAT,INDIGO_SEAT,GOAIR_SEAT,AIRINDIA_SEAT;
 	
 	BookTicket(){
 		
 	}
-    BookTicket(String origin,String dest){
+	
+    BookTicket(String origin,String destination){
 		this.origin=origin;
-		this.dest=dest;
+		this.destination=destination;
 	}
 
 
-	BookTicket(String origin,String dest,int Vseat,int Iseat,int Gseat,int Aseat){
+	BookTicket(String origin,String destination,int VISTARA_SEAT,int INDIGO_SEAT,int GOAIR_SEAT,int AIRINDIA_SEAT){
 		
 		this.origin=origin;
-		this.dest=dest;
-		this.Vseat=Vseat;
-		this.Iseat=Iseat;
-		this.Gseat=Gseat;
-		this.Aseat=Aseat;
+		this.destination=destination;
+		this.VISTARA_SEAT=VISTARA_SEAT;
+		this.INDIGO_SEAT=INDIGO_SEAT;
+		this.GOAIR_SEAT=GOAIR_SEAT;
+		this.AIRINDIA_SEAT=AIRINDIA_SEAT;
 	}
 	
 	String checkingFlights(){
 		
-			System.out.println("\n We have found some flights from your Origin: " + this.origin +" and Destination: "+this.dest);
+			System.out.println("\n We have found some flights from your Origin: " + this.origin.toUpperCase() +" and Destination: "+this.destination.toUpperCase());
 	
-			System.out.println("\nFlight 563A: Vistara            Time : 4:00"
-					+ "    Available Seats =  " + Vseat );
-			System.out.println("Flight 453E: Indigo             Time : 10:00"
-					+ "   Available Seats =  " + Iseat );
-			System.out.println("Flight 234E: GoAir              Time : 16:00"
-					+ "   Available Seats =  " + Gseat );
-			System.out.println("Flight 43RF: AirIndia           Time : 21:00"
-					+ "   Available Seats =  " + Aseat+"\n" );
+			System.out.println("\nFlight 563A: Vistara            Time : 4:00"+ "    Available Seats =  " + VISTARA_SEAT );
+			System.out.println("Flight 453E: Indigo             Time : 10:00" + "   Available Seats =  " + INDIGO_SEAT );
+			System.out.println("Flight 234E: GoAir              Time : 16:00" + "   Available Seats =  " + GOAIR_SEAT );
+			System.out.println("Flight 43RF: AirIndia           Time : 21:00" + "   Available Seats =  " + AIRINDIA_SEAT+"\n" );
 	
 			Scanner sc = new Scanner(System.in);
 			System.out.print("Enter Flight Number (Example:563A) :  ");
 			this.flightno = sc.next();
 		    return flightno;	
+		    
 	}
 	
 	
@@ -170,15 +177,15 @@ class BookTicket{
 class Flight extends BookTicket {
 
 	String origin;
-	String dest,FlightName;
+	String destination,FlightName;
 	String name,city;
 	String yes;
 	String PassengerName,confirm,FlightNo;
 	int age,seat;
 
-	Flight(String origin, String dest,String name,String FlightNo,String FlightName,int seat) {
+	Flight(String origin, String destination,String name,String FlightNo,String FlightName,int seat) {
 		this.origin=origin;
-		this.dest=dest;
+		this.destination=destination;
 		this.name=name;
 		this.FlightNo=FlightNo;
 		this.seat=seat;
@@ -187,20 +194,22 @@ class Flight extends BookTicket {
 	
 	int bookingFlight() {
 		
-		System.out.println("You have selected "+ FlightName +" Flight of Flight No:"+ FlightNo);
-		System.out.println("\nAlert: Only "+seat+" seat available for Flight No "+FlightNo+" on this route.");
+		System.out.println("You have selected "+ FlightName.toUpperCase() +" Flight of Flight No: "+ FlightNo.toUpperCase());
+		System.out.println("\nAlert: Only "+seat+" seat available for Flight No "+FlightNo.toUpperCase()+" on this route.");
 		
 		if(seat==0)
 		{			
 			System.out.println("Sorry!! No Seats Available");
 			System.out.println("\nCheck other Option:");
-			BookTicket bc = new BookTicket(origin,dest);
+			BookTicket bc = new BookTicket(origin,destination);
 		
 		}
 		else {
 		
 		Scanner sc = new Scanner(System.in);
 
+		System.out.println("\n*****Booking Detailes to be Entered*****");
+		
 		System.out.print("Enter Passenger Name: ");
 		PassengerName=sc.nextLine();
 		System.out.print("Enter Passenger City: ");
@@ -209,7 +218,7 @@ class Flight extends BookTicket {
 		System.out.print("Enter Passenger Age: ");
 		age=sc.nextInt();
 		System.out.println("Origin City: "+origin);
-		System.out.println("Destination City: "+dest);
+		System.out.println("Destination City: "+destination);
 
 		
 		System.out.print("\nConfirm to Book Ticket yes/no:");
@@ -223,22 +232,23 @@ class Flight extends BookTicket {
 			System.out.println("\n\n"+FlightName +" Ticket Booked Successfully");
 			
 			
-			BookingHistory bc=new BookingHistory();	
-			bc.setPassengerName(PassengerName);
-			bc.setAge(age);
-			bc.setDest(dest);
-			bc.setOrigin(origin);
-			bc.setFlightName(FlightName);
-			bc.setFlightNo(FlightNo);
+			BookingHistory bh=new BookingHistory();	
+			
+			bh.setPassengerName(PassengerName);
+			bh.setAge(age);
+			bh.setDest(destination);
+			bh.setOrigin(origin);
+			bh.setFlightName(FlightName);
+			bh.setFlightNo(FlightNo);
 
 			
 			//Booking Output
 
-			System.out.println("\n\nYour Booked Ticket of Flight " + bc.getFlightName() + " : "+bc.getFlightNo()+" is:");
-			System.out.println("Passenger Name :           " + bc.getPassengerName());
-			System.out.println("Passenger age :            " + bc.getAge());
-			System.out.println("Destination City :         " + bc.getDest());
-			System.out.println("Origin City :              " + bc.getOrigin() );
+			System.out.println("\n\nYour Booked Ticket of Flight " + bh.getFlightName().toUpperCase() + " : "+bh.getFlightNo().toUpperCase()+" is:");
+			System.out.println("Passenger Name :           " + bh.getPassengerName().toUpperCase());
+			System.out.println("Passenger age :            " + bh.getAge());
+			System.out.println("Destination City :         " + bh.getDest().toUpperCase());
+			System.out.println("Origin City :              " + bh.getOrigin().toUpperCase());
 			System.out.println("\nHave A Nice Journey!!!");
 
 
@@ -251,10 +261,10 @@ class Flight extends BookTicket {
 			//call main class loop automatically
 			 }
 			else{
-				ThankYou ty = new ThankYou();
 				
-				//terminate the programme
-	            System.exit(1);		 
+				ThankYou message = new ThankYou();
+				message.exit();
+				 
 				}
 																	
 			}
@@ -278,7 +288,7 @@ class Flight extends BookTicket {
 	class BookingHistory{
 		
 		private String origin;
-		private String dest;
+		private String destination;
 		private String PassengerName,FlightName,FlightNo;
 		private int age;
 		
@@ -294,12 +304,12 @@ class Flight extends BookTicket {
 		
 		
 			public String getDest() {
-				return dest;
+				return destination;
 			}
 		
 		
-			public void setDest(String dest) {
-				this.dest = dest;
+			public void setDest(String destination) {
+				this.destination = destination;
 			}
 		
 		
@@ -348,9 +358,15 @@ class Flight extends BookTicket {
 	
 	
 	class ThankYou{
+		
 			ThankYou()
 			{
 				System.out.println("\n\n ******✈️ Thank You for using our Service ✈️******");
 			}
+			
+			void exit() {
+			    System.exit(1);		 	
+			}
+			
 	}
 	
