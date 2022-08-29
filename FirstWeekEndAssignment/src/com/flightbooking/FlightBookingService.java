@@ -6,7 +6,7 @@
 
 package com.flightbooking;
 
-import java.util.*;
+import java.util.Scanner;
 
 
 public class FlightBookingService {
@@ -64,9 +64,13 @@ public class FlightBookingService {
 	        			String destination=sc.nextLine();
 	        			
 	        			BookTicket bk = new BookTicket(origin,destination,VISTARA_SEAT,INDIGO_SEAT,GOAIR_SEAT,AIRINDIA_SEAT);
+	        			
+	        			if( bk != null)
+	        			{
+	        				
 	        			String Flightno=bk.checkingFlights();
 	        			
-	        			
+	        				        			
 	        			//checking flight no
 	        			
 	        			if (VISTARA_FLIGHT_NO.equalsIgnoreCase(Flightno)) 
@@ -97,6 +101,8 @@ public class FlightBookingService {
 	        			        				        						
 	        			}
         			
+	        		}
+	        			        				        			
         			    break;    			
         		}
         		
