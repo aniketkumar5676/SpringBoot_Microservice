@@ -9,7 +9,7 @@ package com.flightbooking;
 import java.util.Scanner;
 
 
-public class FlightBookingService {
+public class FlightBookingServiceMain {
 	
 	public static void main(String[] a) {
  
@@ -73,37 +73,37 @@ public class FlightBookingService {
 	        			switch(Flightno)
 	        			{
 	        			  
-		        			case(VISTARA_FLIGHT_NO):{
-		        				Flight vs=new Flight(origin,destination,name,Flightno,"Vistara",VISTARA_SEAT);
-		        				VISTARA_SEAT=vs.bookingFlight();
-		        				break;
-	    				        				
-		        			}
-		        			
-	                    	case(INDIGO_FLIGHT_NO):{
-		        				
-	                    		Flight vs=new Flight(origin,destination,name,Flightno,"IndiGo",INDIGO_SEAT);
-		        				INDIGO_SEAT=vs.bookingFlight();
-		        				break;
-		        			}
-	                    	
-	                    	case(GOAIR_FLIGHT_NO):{
-		        				
-	                    		Flight vs=new Flight(origin,destination,name,Flightno,"Go Air",GOAIR_SEAT);
-		        				GOAIR_SEAT=vs.bookingFlight();
-		        				break;
-		        			}
-	                    	
-	                    	case(AIRINDIA_FLIGHT_NO):{
-		        				
-	                    		Flight vs=new Flight(origin,destination,name,Flightno,"Air India",AIRINDIA_SEAT);
-		        				AIRINDIA_SEAT=vs.bookingFlight();
-		        				break;
-		        			}
-	                    	default:{
-	                    		System.out.println("Wrong Flight No");
-	                    		break;
-	                    	}
+			        			case(VISTARA_FLIGHT_NO):{
+			        				Flight vs=new Flight(origin,destination,name,Flightno,"Vistara",VISTARA_SEAT);
+			        				VISTARA_SEAT=vs.bookingFlight();
+			        				break;
+		    				        				
+			        			}
+			        			
+		                    	case(INDIGO_FLIGHT_NO):{
+			        				
+		                    		Flight vs=new Flight(origin,destination,name,Flightno,"IndiGo",INDIGO_SEAT);
+			        				INDIGO_SEAT=vs.bookingFlight();
+			        				break;
+			        			}
+		                    	
+		                    	case(GOAIR_FLIGHT_NO):{
+			        				
+		                    		Flight vs=new Flight(origin,destination,name,Flightno,"Go Air",GOAIR_SEAT);
+			        				GOAIR_SEAT=vs.bookingFlight();
+			        				break;
+			        			}
+		                    	
+		                    	case(AIRINDIA_FLIGHT_NO):{
+			        				
+		                    		Flight vs=new Flight(origin,destination,name,Flightno,"Air India",AIRINDIA_SEAT);
+			        				AIRINDIA_SEAT=vs.bookingFlight();
+			        				break;
+			        			}
+		                    	default:{
+		                    		System.out.println("Wrong Flight No");
+		                    		break;
+		                    	}
 	        				
 	        	     	}
 	        	    			
