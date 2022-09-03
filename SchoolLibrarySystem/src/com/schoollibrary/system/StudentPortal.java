@@ -12,6 +12,8 @@ public class StudentPortal {
 	ArrayList<String> mobile = new ArrayList<>();
 	ArrayList<String> book = new ArrayList<>();
 	ArrayList<String> date = new ArrayList<>();
+	ArrayList<String> author = new ArrayList<>();
+
 
 	String Stuname;
 	int innerloop;
@@ -20,7 +22,7 @@ public class StudentPortal {
 	Scanner sc = new Scanner(System.in);
 
 	String studentPortal(ArrayList<String> name, ArrayList<String> classname, ArrayList<String> mobile,
-			ArrayList<String> book, String Stuname,ArrayList<String> date) throws ParseException {
+			ArrayList<String> book, String Stuname,ArrayList<String> date, ArrayList<String> author) throws ParseException {
 
 		int count = 0;
 		int innerloop = 0;
@@ -29,6 +31,7 @@ public class StudentPortal {
 		this.classname.addAll(classname);
 		this.mobile.addAll(mobile);
 		this.book.addAll(book);
+		this.author.addAll(author);
 		this.date.addAll(date);
 		this.Stuname = Stuname;
 		
@@ -72,7 +75,7 @@ public class StudentPortal {
 
 			if ("No Book Borrowed".equals(nu.getBookname())) {
 
-				System.out.println("\n\tYou havenot Borrowed Any Book Yet..\n");
+				System.out.println("\n\tYou haven't Borrowed Any Book Yet..\n");
 
 			} else {
 
@@ -92,13 +95,12 @@ public class StudentPortal {
 
 		} else {
 
-			System.out.println("\n\tWant to return the Book? yes/no: - ");
+			System.out.print("\n\tWant to return the Book? yes/no: - ");
 			String option = sc.next();
 
 			if ("yes".equalsIgnoreCase(option)) {
 				String returnedBook = nu.getBookname();
 				this.innerloop = innerloop;
-
 				return returnedBook;
 
 			}

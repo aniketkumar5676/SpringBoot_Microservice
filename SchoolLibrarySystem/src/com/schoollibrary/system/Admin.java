@@ -18,6 +18,7 @@ public class Admin extends CheckLogin {
 
 	}
 
+	@SuppressWarnings("unchecked")
 	void adminAccess() throws ParseException {
 
 		Map<Integer, String> bookname = new HashMap<>();
@@ -25,11 +26,11 @@ public class Admin extends CheckLogin {
 
 		System.out.println("\n\n\tWelcome," + id.toUpperCase());
 		int loop = 1;
-		
-		//Predefined Book
+
+		// Predefined Book
 
 		bookname.put(1, "Cinder");
-		bookname.put(2, "Fair");
+		bookname.put(2, "Summer");
 		bookname.put(3, "Winter");
 		bookname.put(4, "Insurgent");
 		bookname.put(5, "Divergent");
@@ -45,18 +46,18 @@ public class Admin extends CheckLogin {
 		ArrayList<String> mobile = new ArrayList<>();
 		ArrayList<String> book = new ArrayList<>();
 		ArrayList<String> date = new ArrayList<>();
-
+		ArrayList<String> author = new ArrayList<>();
 
 		Map<Integer, String> selectedbook = new HashMap<>();
-
 
 		while (loop < 2) {
 
 			System.out.println("\n\n\tChoose Option:- ");
-			System.out.println("\t1.Add Book ");
-			System.out.println("\t2.Issue Book ");
-			System.out.println("\t3.Search Student Details");
-			System.out.println("\t4.Exit to Login ");
+			System.out.println("\t1.Available Book ");
+			System.out.println("\t2.Add Book ");
+			System.out.println("\t3.Issue Book ");
+			System.out.println("\t4.Search Student Details");
+			System.out.println("\t5.Exit to Login ");
 
 			System.out.print("\n\n\tEnter Your Option: - ");
 
@@ -65,12 +66,28 @@ public class Admin extends CheckLogin {
 			Scanner sc = new Scanner(System.in);
 			String option = sc.next();
 
+			try {
+				Integer.parseInt(option);
+
+			} catch (Exception e) {
+				System.err.println("\n\tTry to chooose correct option :");
+				continue;
+			}
+
 			switch (Integer.parseInt(option)) {
 
 			case 1: {
-				BookDeatils bk = new BookDeatils();
 
-				System.out.println("\t\nAdd Book Name: ");
+				System.out.println("\n\t Books Available in the Library:");
+				new BookLibrary(bookname, bookauthor);
+				break;
+
+			}
+
+			case 2: {
+
+				BookDeatils bk = new BookDeatils();
+				System.out.print("\n\tAdd Book Name: ");
 				String enteredbookname = sc.next();
 
 				Set<Integer> set = bookname.keySet();
@@ -79,7 +96,7 @@ public class Admin extends CheckLogin {
 
 					if (bookname.get(k).equals(enteredbookname)) {
 						count = 1;
-						System.out.println("\t\nData Already Available...");
+						System.out.println("\n\tData Already Available...");
 						break;
 					}
 
@@ -101,21 +118,21 @@ public class Admin extends CheckLogin {
 				if (count == 0) {
 					bookname.put(bookname.size() + 1, bk.itemName(enteredbookname));
 
-					System.out.println("\t\nAdd Book Author: ");
+					System.out.print("\n\tAdd Book Author: ");
 					String enteredauthor = sc.next();
 
 					bookauthor.put(bookauthor.size() + 1, bk.itemAuthor(enteredauthor));
-					System.out.println("\t\n---Book Added Successfully:--");
+					System.out.println("\n\t---Book Added Successfully:--");
 				}
 
 				break;
 			}
 
-			case 2: {
+			case 3: {
 
 				IssueBook ib = new IssueBook(id);
-				System.out.println("\n\t Books Available to get issued:");
-				System.out.println("\n\t" + bookname);
+				new BookLibrary(bookname, bookauthor);
+
 				System.out.print("\n\t Enter your Choice between 1 to " + bookname.size() + " :--");
 				int bookoption = 0;
 
@@ -139,6 +156,7 @@ public class Admin extends CheckLogin {
 				classname.add(ib.classname);
 				mobile.add(String.valueOf(ib.mobile));
 				book.add((bookname.get(bookoption)));
+				author.add((bookauthor.get(bookoption)));
 				date.add(ib.date);
 
 				bookname.remove(bookoption);
@@ -149,29 +167,19 @@ public class Admin extends CheckLogin {
 				break;
 			}
 
-			case 3: {
+			case 4: {
 
 				User ur = new User();
 				StudentPortal s = new StudentPortal();
-				String returnedBook = s.studentPortal(name, classname, mobile, book, ur.user,date);
+				String returnedBook = s.studentPortal(name, classname, mobile, book, ur.user, date, author);
+
 				if ("0".equals(returnedBook)) {
 
 				} else {
 					// ----Logic to reIndex Hasmap Data---
 
-					bookname.put(bookname.size() + 2, returnedBook);
-
-					ArrayList<String> tempBook = new ArrayList<>();
-					Set<Integer> set = bookname.keySet();
-
-					for (Integer k : set) {
-						tempBook.add(bookname.get(k));
-					}
-					bookname.clear();
-
-					for (int i = 0; i < tempBook.size(); i++) {
-						bookname.put(i + 1, tempBook.get(i));
-					}
+					bookname = UpdateLibraryBook.reIndex(bookname, returnedBook);
+					bookauthor = UpdateBookAuthor.reIndex(bookauthor, author.get(s.innerloop));
 
 					book.add(s.innerloop, "No Book Borrowed");
 					System.out.println("\t\n---Book Returned Successfully to Library");
@@ -180,7 +188,7 @@ public class Admin extends CheckLogin {
 				break;
 			}
 
-			case 4: {
+			case 5: {
 
 				loop = 3;
 				System.out.println("\t\n Thank you..");
