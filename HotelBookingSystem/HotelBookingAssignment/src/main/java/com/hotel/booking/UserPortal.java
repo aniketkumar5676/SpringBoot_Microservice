@@ -9,8 +9,7 @@ public class UserPortal extends UserData {
 	int userMenu(Integer position) {
 
 		this.position = position;
-		
-		
+
 		try (Scanner sc = new Scanner(System.in)) {
 			Booking bk = new Booking();
 
@@ -21,14 +20,14 @@ public class UserPortal extends UserData {
 			System.out.println("\n\tWelcome " + username.get(position) + ",");
 
 			while (true) {
-				
+
 				System.out.println("\n\n\t\t\tOur Services to you:\n");
 				System.out.println("\t\t\t1.Book Hotels");
 				System.out.println("\t\t\t2.Your Profile");
 				System.out.println("\t\t\t3.Logout");
 
 				System.out.print("\n\n\t\t\tChoose Option:");
-				
+
 				while (true) {
 					option = sc.next();
 
@@ -57,7 +56,7 @@ public class UserPortal extends UserData {
 							Integer.parseInt(days);
 							break;
 
-						    } catch (Exception e) {
+						} catch (Exception e) {
 							System.err.print("\n\t\t\tTry to Enter Correct Days :");
 							continue;
 						}
@@ -65,27 +64,26 @@ public class UserPortal extends UserData {
 
 					new Loading();
 
-					bk.bookHotel(location,Integer.parseInt(days), userid.get(position));
+					bk.bookHotel(location, Integer.parseInt(days), userid.get(position));
 
 					break;
 
 				}
 				case 2: {
-					
-					new Profile(username.get(position),userphoneno.get(position),useremail.get(position),useraddress.get(position));
-							
+
+					new Profile(username.get(position), userphoneno.get(position), useremail.get(position),
+							useraddress.get(position));
+
 					continue;
 
-					
-
 				}
-				
+
 				case 3: {
 
 					System.out.print("\n\t\t\tThank You For Using Our Service.. System Terminating..");
-	    			new Loading();
-	                System.exit(1);
-					
+					new Loading();
+					System.exit(1);
+
 					break;
 
 				}
@@ -98,7 +96,7 @@ public class UserPortal extends UserData {
 				}
 
 				}
-              break;
+				break;
 			}
 
 		}

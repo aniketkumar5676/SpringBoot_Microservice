@@ -67,7 +67,7 @@ public class PaymentConfirm extends UserData {
 					System.out.print("\n\t\t\tDoing Payment: ");
 					new Loading();
 					cp.payment(new CreditCard());
-					
+
 					System.out.print("\n\t\t\tGenerating Booking Id: ");
 					new Loading();
 					br.bookingReceipt(hotel, position, days, room, location);
@@ -79,7 +79,7 @@ public class PaymentConfirm extends UserData {
 					System.out.print("\n\t\t\tDoing Payment: ");
 					new Loading();
 					cp.payment(new DebitCard());
-					
+
 					System.out.print("\n\t\t\tGenerating Booking Id: ");
 					new Loading();
 					br.bookingReceipt(hotel, position, days, room, location);

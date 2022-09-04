@@ -26,7 +26,8 @@ public class TajPalaceHotel implements Hotel {
 
 	public void hotelFacilities() {
 
-		System.out.println("\n\t\t\tFacilities: ( Breakfast and Dinner, All AC Room , Wifi Campus, Airport Drop and Pickup, Swimming Pool, Bar, Game Parlour )");
+		System.out.println(
+				"\n\t\t\tFacilities: ( Breakfast and Dinner, All AC Room , Wifi Campus, Airport Drop and Pickup, Swimming Pool, Bar, Game Parlour )");
 
 	}
 }

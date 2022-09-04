@@ -19,7 +19,6 @@ public class HolidayInnHotel implements Hotel {
 
 	}
 
-
 	public long hotelRoomPrice() {
 		return Hotelroomprice;
 
@@ -27,8 +26,9 @@ public class HolidayInnHotel implements Hotel {
 
 	public void hotelFacilities() {
 
-		System.out.println("\n\t\t\tFacilities: ( Breakfast and Dinner, Wifi Campus, All AC Rooms, Airport Drop and Pickup )");
-	
+		System.out.println(
+				"\n\t\t\tFacilities: ( Breakfast and Dinner, Wifi Campus, All AC Rooms, Airport Drop and Pickup )");
+
 	}
 
 }

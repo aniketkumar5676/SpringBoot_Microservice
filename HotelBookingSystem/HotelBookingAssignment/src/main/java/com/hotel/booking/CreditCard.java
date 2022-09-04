@@ -2,17 +2,14 @@ package com.hotel.booking;
 
 public class CreditCard implements Payments {
 
-	
 	public void cardNo() {
 
 	}
 
-	
 	public void cardName() {
 
 	}
 
-	
 	public void cvv() {
 
 	}
@@ -20,7 +17,6 @@ public class CreditCard implements Payments {
 	public void expiryMonth() {
 
 	}
-
 
 	@Override
 	public void paymentStatus() {

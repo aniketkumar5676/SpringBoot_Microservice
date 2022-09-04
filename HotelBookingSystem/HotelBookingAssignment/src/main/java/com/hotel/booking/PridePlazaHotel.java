@@ -25,9 +25,9 @@ public class PridePlazaHotel implements Hotel {
 	}
 
 	public void hotelFacilities() {
-		
-		System.out.println("\n\t\t\tFacilities: ( Breakfast only, Wifi Campus, Airport Drop and Pickup, Swimming Pool, Bar, Spa )");
 
+		System.out.println(
+				"\n\t\t\tFacilities: ( Breakfast only, Wifi Campus, Airport Drop and Pickup, Swimming Pool, Bar, Spa )");
 
 	}
 

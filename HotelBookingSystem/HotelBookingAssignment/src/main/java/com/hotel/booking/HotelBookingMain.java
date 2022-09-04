@@ -1,5 +1,13 @@
 package com.hotel.booking;
 
+
+/*
+ * Created by Aniket Kumar
+ * 
+ * <Hotel Booking System>
+ * */
+
+
 import java.util.Scanner;
 
 public class HotelBookingMain {
@@ -46,8 +54,8 @@ public class HotelBookingMain {
 			}
 			case 2: {
 				System.out.print("\n\t\t\tThank You For Using Our Service.. System Terminating..");
-    			new Loading();
-                System.exit(1);
+				new Loading();
+				System.exit(1);
 			}
 
 			default: {

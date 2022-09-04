@@ -14,8 +14,8 @@ public class CommonHotel {
 	long hotelRoomPrice(Hotel ht) {
 		return ht.hotelRoomPrice();
 	}
-	
-    void hotelFacilities(Hotel ht) {
+
+	void hotelFacilities(Hotel ht) {
 		ht.hotelFacilities();
 	}
 

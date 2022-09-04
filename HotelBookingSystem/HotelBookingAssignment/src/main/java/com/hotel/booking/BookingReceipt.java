@@ -25,21 +25,19 @@ public class BookingReceipt extends UserData {
 		System.out.println("\n\t\t\t*********************************************************");
 		System.out.println("\t\t\t--------            Booking Receipt              -------*");
 		System.out.println("\t\t\t*********************************************************");
-		
-		System.out.print("\n\t\t\tBooking Id:- " +BookingId);
 
-		System.out.print("\n\t\t\tUser Id:- " +userid.get(position));
-		System.out.print("\n\t\t\tUser Name:- " +username.get(position));
-		System.out.print("\n\t\t\tUser email:- " +useremail.get(position));
+		System.out.print("\n\t\t\tBooking Id:- " + BookingId);
+
+		System.out.print("\n\t\t\tUser Id:- " + userid.get(position));
+		System.out.print("\n\t\t\tUser Name:- " + username.get(position));
+		System.out.print("\n\t\t\tUser email:- " + useremail.get(position));
 		System.out.print("\n\t\t\tHotel Name:- ");
 		ch.hotelName(hotel);
-		System.out.print("\n\t\t\tHotel Place:- " + location );
-		System.out.print("\n\t\t\tNo of Days Staying:- " + days );
-		System.out.print("\n\t\t\tNo of Room Booked:- " + room );
-		System.out.print("\n\t\t\tPayment Made:- Rs " +days*ch.hotelRoomPrice(hotel));
-		
+		System.out.print("\n\t\t\tHotel Place:- " + location);
+		System.out.print("\n\t\t\tNo of Days Staying:- " + days);
+		System.out.print("\n\t\t\tNo of Room Booked:- " + room);
+		System.out.print("\n\t\t\tPayment Made:- Rs " + days * ch.hotelRoomPrice(hotel));
 
-		
 	}
 
 }

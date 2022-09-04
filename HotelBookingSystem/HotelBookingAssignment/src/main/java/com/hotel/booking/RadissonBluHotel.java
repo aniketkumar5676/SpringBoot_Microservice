@@ -9,8 +9,8 @@ public class RadissonBluHotel implements Hotel {
 	long Hotelroomprice = 8000;
 
 	public void hotelName() {
-		
-	System.out.print("Radission Blu\n");
+
+		System.out.print("Radission Blu\n");
 
 	}
 
@@ -25,12 +25,9 @@ public class RadissonBluHotel implements Hotel {
 	}
 
 	public void hotelFacilities() {
-		
-		System.out.println("\n\t\t\tFacilities: ( Breakfast only, Wifi Campus, Airport Drop and Pickup, Swimming Pool )");
 
-
-
-
+		System.out
+				.println("\n\t\t\tFacilities: ( Breakfast only, Wifi Campus, Airport Drop and Pickup, Swimming Pool )");
 
 	}
 }
