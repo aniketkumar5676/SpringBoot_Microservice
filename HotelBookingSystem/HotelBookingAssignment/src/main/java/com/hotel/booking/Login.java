@@ -47,9 +47,8 @@ public class Login extends UserData {
 				}
 
 			}
-			
-			if(found==1)
-			{
+
+			if (found == 1) {
 				System.exit(1);
 			}
 
