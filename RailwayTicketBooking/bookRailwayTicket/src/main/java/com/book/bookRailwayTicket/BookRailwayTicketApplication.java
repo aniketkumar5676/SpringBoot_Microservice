@@ -33,9 +33,9 @@ public class BookRailwayTicketApplication {
 	@PostConstruct
 	public void addCredentials() {
 		List<UserCredentials> userCredentialsList = Stream.of(
-				new UserCredentials(1, "Aniket", "aniket",900),
-				new UserCredentials(2, "Rahul", "rahul",500),
-				new UserCredentials(3, "Satyajeet", "satyajeet",200))
+				new UserCredentials(1, "Aniket", "aniket",1900,"admin"),
+				new UserCredentials(2, "Rahul", "rahul",500,"user"),
+				new UserCredentials(3, "Satyajeet", "satyajeet",300,"user"))
 				.collect(Collectors.toList());
 		userCredentialsRepo.saveAll(userCredentialsList);
 

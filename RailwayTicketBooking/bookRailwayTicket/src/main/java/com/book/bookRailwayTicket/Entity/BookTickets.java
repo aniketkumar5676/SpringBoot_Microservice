@@ -19,6 +19,7 @@ public class BookTickets {
     private int bookingno;
     private String bookingId;
     private String name;
+    private String userId;
     private int age;
     private int trainNo;
     private String origin;

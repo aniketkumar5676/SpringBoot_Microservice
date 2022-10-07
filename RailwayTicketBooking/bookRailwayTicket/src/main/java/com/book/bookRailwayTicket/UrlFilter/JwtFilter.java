@@ -1,6 +1,6 @@
 package com.book.bookRailwayTicket.UrlFilter;
 
-import com.book.bookRailwayTicket.Services.AppService;
+import com.book.bookRailwayTicket.Security.Services.AppService;
 import com.book.bookRailwayTicket.Util.JwtUtil;
 import com.book.bookRailwayTicket.dto.ActiveUser;
 import org.springframework.beans.factory.annotation.Autowired;

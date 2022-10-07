@@ -23,7 +23,9 @@ public class PaymentController {
 
     @GetMapping("/paymentHistory")
     public List<Payment> paymentHistory(){
+
         return paymentService.paymentHistory();
+
     }
 
 }

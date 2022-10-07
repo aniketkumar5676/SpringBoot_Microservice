@@ -1,7 +1,7 @@
 package com.book.bookRailwayTicket.Security;
 
 
-import com.book.bookRailwayTicket.Services.AppService;
+import com.book.bookRailwayTicket.Security.Services.AppService;
 import com.book.bookRailwayTicket.UrlFilter.JwtFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;

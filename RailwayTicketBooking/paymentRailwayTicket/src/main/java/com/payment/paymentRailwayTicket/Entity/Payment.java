@@ -17,6 +17,7 @@ public class Payment {
     @Id
     private String payment_id;
     private String booking_id;
+    private String userId;
     private String payment_date;
     private String status;
     private double total_price;

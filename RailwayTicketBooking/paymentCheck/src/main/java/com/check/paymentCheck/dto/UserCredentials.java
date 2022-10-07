@@ -22,4 +22,6 @@ public class UserCredentials {
     private String name;
     private String password;
     private double balance;
+    private String role;
+
 }

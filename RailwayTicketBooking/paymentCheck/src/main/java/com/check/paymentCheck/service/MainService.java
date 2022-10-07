@@ -22,7 +22,7 @@ public class MainService {
         {
             userCredentialsRepo.save(UserCredentials.build(user.getId(),
                     user.getName(), user.getPassword(),
-                    user.getBalance()- checkBalance.getTotal_price()));
+                    user.getBalance()- checkBalance.getTotal_price(), user.getRole()));
                      balanceResponse.setMessage("Success");
         }else{
                     balanceResponse.setMessage("Failed");

@@ -1,4 +1,4 @@
-package com.book.bookRailwayTicket.Services;
+package com.book.bookRailwayTicket.Security.Services;
 
 import com.book.bookRailwayTicket.Entity.*;
 import com.book.bookRailwayTicket.ExceptionHandler.NotFound;
@@ -15,9 +15,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import java.time.LocalDate;
-import java.util.Collections;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 @Service
 public class AppService implements UserDetailsService {
@@ -37,6 +35,9 @@ public class AppService implements UserDetailsService {
 
     @Autowired
     RestTemplate restTemplate;
+    @Autowired
+    ActiveUser activeUser;
+
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -66,6 +67,7 @@ public class AppService implements UserDetailsService {
 
                 BookTickets bookTickets =new BookTickets();
 
+                bookTickets.setUserId(activeUser.getUser());
                 bookTickets.setBookingId(paymentResponse.getBooking_id());
                 bookTickets.setName(ticketinfo.getName());
                 bookTickets.setAge(ticketinfo.getAge());
@@ -111,7 +113,38 @@ public class AppService implements UserDetailsService {
         return trainsRepo.findAll();
     }
 
-    public List<BookTickets> bookingHistory() {
-        return bookTicketsRepo.findAll();
+    public List<BookTickets> bookingHistory() throws NotFound {
+
+    UserCredentials userCredentials=  userCredentialsRepo.findByName(activeUser.getUser());
+
+        if(userCredentials.getRole().equals("admin"))
+        {
+            return bookTicketsRepo.findAll();
+        }else {
+
+          if(bookTicketsRepo.findByUserId(activeUser.getUser()).isEmpty())
+          {
+              throw new NotFound("No Booking found for User  " + activeUser.getUser());
+          }
+
+            return bookTicketsRepo.findByUserId(activeUser.getUser());
+        }
+
+    }
+
+    public Map balance() {
+
+      UserCredentials userCredentials=  userCredentialsRepo.findByName(activeUser.getUser());
+      Map<String, Object> userMap = new HashMap<>();
+
+      if(userCredentials.getRole().equals("admin"))
+      {
+          List<UserCredentials> userList =userCredentialsRepo.findAll();
+          userList.forEach(user -> userMap.put(user.getName(),user.getBalance()));
+          return userMap;
+
+      }
+        userMap.put(userCredentials.getName(),userCredentials.getBalance());
+      return userMap;
     }
 }

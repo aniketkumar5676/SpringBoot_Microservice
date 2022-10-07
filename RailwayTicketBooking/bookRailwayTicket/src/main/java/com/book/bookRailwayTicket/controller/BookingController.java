@@ -4,11 +4,8 @@ import com.book.bookRailwayTicket.Entity.BookTickets;
 import com.book.bookRailwayTicket.Entity.StationCode;
 import com.book.bookRailwayTicket.Entity.Trains;
 import com.book.bookRailwayTicket.ExceptionHandler.NotFound;
-import com.book.bookRailwayTicket.Services.AppService;
-import com.book.bookRailwayTicket.dto.ActiveUser;
-import com.book.bookRailwayTicket.dto.DisplayTicket;
-import com.book.bookRailwayTicket.dto.Ticketinfo;
-import com.book.bookRailwayTicket.dto.UserInput;
+import com.book.bookRailwayTicket.Security.Services.AppService;
+import com.book.bookRailwayTicket.dto.*;
 import com.book.bookRailwayTicket.Util.JwtUtil;
 import com.book.bookRailwayTicket.repo.UserCredentialsRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 public class BookingController {
@@ -67,9 +65,13 @@ public class BookingController {
     }
 
     @GetMapping("/bookingHistory")
-    public List<BookTickets> bookingHistory(){
+    public List<BookTickets> bookingHistory() throws NotFound {
         return appService.bookingHistory();
     }
 
+    @GetMapping("/balance")
+    public Map balance(){
+        return appService.balance();
+    }
 
 }
